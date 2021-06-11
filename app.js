@@ -29,7 +29,7 @@ app.set('views', 'views');
 
 // const csrfProduction = csrf();
 
-const _URI = 'mongodb+srv://gursewak:<8196030302gur>@cluster0.gvvyx.mongodb.net/campus?retryWrites=true&w=majority';
+const _URI = process.env.MONGODB_URI;
 const store = new MongoDB_store({
   uri: _URI,
   collection: 'session',
