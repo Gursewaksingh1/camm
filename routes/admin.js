@@ -12,7 +12,7 @@ router.post('/edit-student', isauth,[
     body('email').isEmail().withMessage('must write email structure'),
     body('password').trim().isLength({min: 5, max: 30}).withMessage('password must contain atleast five character'),
     body('stream').isString().isLength({ min: 5}).trim().withMessage('write your stream in words'),
-   body('inWhichYear').trim().isAlphanumeric().withMessage('must write your year of college') ], admincontroller.posteditstudent);
+   body('inWhichYear').trim().isString().withMessage('must write your year of college') ], admincontroller.posteditstudent);
 router.post('/delete-student', isauth, admincontroller.postdeletestudent);
 
 router.get('/addcompany', isauth, admincontroller.getaddcompany)

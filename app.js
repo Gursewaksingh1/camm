@@ -29,7 +29,7 @@ app.set('views', 'views');
 
 // const csrfProduction = csrf();
 
-const _URI = process.env.MONGODB_URI;
+const _URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/campus';
 const store = new MongoDB_store({
   uri: _URI,
   collection: 'session',

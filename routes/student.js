@@ -10,7 +10,7 @@ router.post('/addstudent',[
     body('email').isEmail(),
     body('password').trim().isLength({min: 5, max: 30}).withMessage('password must contain atleast five character'),
     body('stream').trim().isString().withMessage('write your stream in words'),
-   body('inWhichYear').trim().isAlphanumeric().withMessage('must write your year of college') ], studentcontroller.postaddstudent)
+   body('inWhichYear').trim().isString().withMessage('must write your year of college') ], studentcontroller.postaddstudent)
 
 router.get('/', isauth, studentcontroller.gethome);
 
