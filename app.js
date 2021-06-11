@@ -2,7 +2,7 @@ const path = require('path');
 
 const express = require('express');
 const app = express();
-
+const port = process.env.PORT || 3000;
 const session = require('express-session');
 const MongoDB_store = require('connect-mongodb-session')(session)
 const bodyparser = require('body-parser');
@@ -129,6 +129,8 @@ mongoose.connect(_URI)
   .then(result => {
       console.log('connected')
         
-    app.listen(3000);
+    app.listen(port, () => {
+      console.log(`listen on ${port}`);
+    });
   })
   .catch(err => console.log(err))
