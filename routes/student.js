@@ -6,11 +6,11 @@ const router = express.Router();
 
 router.get('/addstudent', studentcontroller.getaddstudent);
 router.post('/addstudent',[
-    body('name').isString().isLength({ min: 5 }).trim().withMessage('name should be a string and also hold min 5 character'),
+    body('name').isString().notEmpty().isLength({ min: 5 }).trim().withMessage('name should be a string and also hold min 5 character'),
     body('email').isEmail(),
-    body('password').trim().isLength({min: 5, max: 30}).withMessage('password must contain atleast five character'),
-    body('stream').trim().isString().withMessage('write your stream in words'),
-   body('inWhichYear').trim().isString().withMessage('must write your year of college') ], studentcontroller.postaddstudent)
+    body('password').trim().notEmpty().isLength({min: 5, max: 30}).withMessage('password must contain atleast five character'),
+    body('stream').trim().notEmpty().isString().withMessage('write your stream in words'),
+   body('inWhichYear').trim().notEmpty().isString().withMessage('must write your year of college') ], studentcontroller.postaddstudent)
 
 router.get('/', isauth, studentcontroller.gethome);
 
