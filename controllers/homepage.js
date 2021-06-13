@@ -21,6 +21,35 @@ exports.home = (req, res, next) => {
         errormsgs: req.flash('errors'),
 
       })
+      Admin.find()
+  .then(admins => {
+console.log(admins[0])
+    if (admins[0] === undefined) {
+      const name = 'gursewak singh';
+      const email = 'gs7788264@gmail.com';
+      const password = '12345';
+      const sinceInCompany = 1999;
+      const contactNo = 8196030302;
+      const address = 'nordi adda tarn taran';
+      console.log('eesssse');
+      bcrypt
+      .hash(password, 12)
+      .then(hashpw => {
+        const admin = new Admin({
+          name,
+          email,
+          password: hashpw,
+          sinceInCompany,
+          contactNo,
+          address,
+        })
+        return admin.save();
+      })
+    }
+    console.log(admins);
+  }).catch(err => {
+    console.log(err);
+  });
     }
 
     exports.postadminlogin = (req, res, next) => {
