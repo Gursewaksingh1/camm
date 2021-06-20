@@ -21,8 +21,6 @@ const studentrouter = require('./routes/student');
 const companyrouter = require('./routes/company');
 const homepage = require('./routes/homepage');
 const multer = require('multer');
-const student = require('./model/student');
-const { diskStorage } = require('multer');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');

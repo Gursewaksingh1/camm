@@ -23,10 +23,10 @@
             </div>
             
             <div class="form-control">
-                
+                <% if (!editing) {%>
                 <label f1or="password">Password</label>
                 <input type="password" name="password" id="password" value="<% if (editing|| haserror) { %><%= product.password %><% } %>">
-                
+                <% } %>
             </div>
 
             <div class="form-control">
