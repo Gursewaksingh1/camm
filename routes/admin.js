@@ -8,31 +8,30 @@ router.get('/', isauth, admincontroller.adminhomepage)
 router.get('/all-students', isauth, admincontroller.getallstudents);
 router.get('/edit-student/:studentid',  isauth, admincontroller.geteditstudent);
 router.post('/edit-student', isauth,[
-    body('name').notEmpty().isString().isLength({ min: 5 }).trim().withMessage('name should be a string and also hold min 5 character'),
-    body('email').isEmail().withMessage('must write email structure'),
-    body('password').notEmpty().trim().isLength({min: 5, max: 30}).withMessage('password must contain atleast five character'),
-    body('stream').notEmpty().isString().isLength({ min: 5}).trim().withMessage('write your stream in words'),
-   body('inWhichYear').notEmpty().trim().isString().withMessage('must write your year of college') ], admincontroller.posteditstudent);
+    body('name', 'name must be an alphabatic and constin 5 charcater').isString().isLength({min: 5}).trim(),
+    body('email','must use email structure in email box').isEmail(),
+    body('stream', 'write your stream only in alphabatically like BCA').trim().isString().isLength({min: 1}),
+   body('inWhichYear', 'must write your year of college like 2017 or ').trim().isString().isLength({min: 1})
+    ], admincontroller.posteditstudent);
 router.post('/delete-student', isauth, admincontroller.postdeletestudent);
 
 router.get('/addcompany', isauth, admincontroller.getaddcompany)
 router.post('/addcompany',[
-    body('nameOfCompany').notEmpty().isString().trim().isLength({min: 5}).withMessage('must write company name and use atleast 5 characters'),
-    body('email').isEmail().withMessage('must use email structure'),
-    body('password').notEmpty().isLength({min: 5}).trim().withMessage('password must be 5 characters long'),
-    body('ownerName').notEmpty().isString().trim().isLength({min: 5}).withMessage('must write owner name and use atleast 5 characters'),
-    
+    body('nameOfCompany', 'must write company name and use atleast 5 characters').isString().trim().isLength({min: 5}),
+    body('email', 'must use email structure').isEmail(),
+    body('password', 'password must be 8 characters long').isLength({min: 8}).trim(),
+    body('ownerName', 'must write owner name and use atleast 3 characters').isString().trim().isLength({min: 3}),
+    body('aboutCompany', 'aboutCompany box should contain 20 character').isLength({min: 20}).trim().isString(),
 ], isauth, admincontroller.postaddcompany)
 
 router.get('/all-companies', isauth, admincontroller.getallcompanies);
 
 router.get('/edit-company/:companyid', isauth, admincontroller.geteditcompany)
 router.post('/edit-company',[
-    body('nameOfCompany').notEmpty().isString().trim().isLength({min: 5}).withMessage('must write company name and use atleast 5 characters'),
-    body('email').isEmail().withMessage('must use email structure'),
-    body('password').notEmpty().isLength({min: 5}).trim().withMessage('password must be 5 characters long'),
-    body('ownerName').notEmpty().isString().trim().isLength({min: 5}).withMessage('must write owner name and use atleast 5 characters'),
-    
+    body('nameOfCompany', 'must write company name and use atleast 5 characters').isString().trim().isLength({min: 5}),
+    body('email', 'must use email structure').isEmail(),
+    body('ownerName', 'must write owner name and use atleast 3 characters').isString().trim().isLength({min: 3}),
+    body('aboutCompany', 'aboutCompany box should contain 20 character').trim().isString().isLength({min: 20}),
 ], isauth, admincontroller.posteditcompany)
 
 router.post('/delete-company', isauth, admincontroller.postdeletecompany)
@@ -41,11 +40,11 @@ router.get('/all-admin', admincontroller.getalladmin);
 router.post('/delete-admin', admincontroller.postdeleteadmin);
 router.get('/add-admin', isauth, admincontroller.getaddadmin);
 router.post('/add-admin', [
-    body('name').isString().notEmpty().isLength({min: 5}).trim().withMessage('admin name must be written in five character'),
-    body('email').isEmail().notEmpty().withMessage('email must be in proper structure'),
-    body('password').trim().notEmpty().isLength({min: 5 }).withMessage('password must contain 5 characters'),
-    body('sinceInCompany').notEmpty().trim().isNumeric().withMessage('only contain numeric value'),
-    body('contactNo').isNumeric().notEmpty().trim().isLength({min: 10, max: 10 }).withMessage('only contain numeric value and must contain 10 numbers'),
-    body('address').isString().notEmpty().isLength({min: 20}).trim().withMessage('admin address must be written in least 20 character'),
+    body('name', 'admin name must be written in five character').isString().isLength({min: 5}).trim(),
+    body('email', 'email must be in proper structure').isEmail(),
+    body('password', 'password must contain 5 characters').trim().isLength({min: 5 }),
+    body('sinceInCompany', 'only contain date value in (mm/dd/year) format at sinceInCompany box').trim().isDate(),
+    body('contactNo', 'only contain numeric value and must contain 10 numbers').isNumeric().trim().isLength({min: 10, max: 10 }),
+    body('address', 'admin address must be written in least 20 character').isString().isLength({min: 20}).trim(),
 ], isauth, admincontroller.postaddadmin);
 module.exports = router;

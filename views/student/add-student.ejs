@@ -20,25 +20,25 @@
         <form class="product-form" action="<% if (editing)   { %>/admin/edit-student<% } else { %>/student/addstudent<% } %>" method="POST">
             <div class="form-control">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="<% if (editing|| haserror) {%><%=product.name%><%}%>">
+                <input class="<%= validationInput.find(e => e.param === 'name') ? 'invalid' : '' %>" type="text" name="name" id="name" value="<% if (editing|| haserror) {%><%=product.name%><%}%>">
             </div>
             <div class="form-control">
                 <label for="email">email</label>
-                <input type="text" name="email" id="email" value="<% if (editing|| haserror) { %><%= product.email %><% } %>">
+                <input class="<%= validationInput.find(e => e.param === 'email') ? 'invalid' : '' %>" type="text" name="email" id="email" value="<% if (editing|| haserror) { %><%= product.email %><% } %>">
             </div>
             <div class="form-control">
                 <% if (!editing) {%>
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" value="<% if (editing|| haserror) { %><%= product.password %><% } %>">
+                <input class="<%= validationInput.find(e => e.param === 'password') ? 'invalid' : '' %>" type="password" name="password" id="password" value="<% if (editing|| haserror) { %><%= product.password %><% } %>">
             <% } %>
             </div>
             <div class="form-control">
                 <label for="stream">stream</label>
-                <input type="text" name="stream" id="stream"  value="<% if (editing|| haserror) { %><%= product.stream %><% } %>">
+                <input class="<%= validationInput.find(e => e.param === 'stream') ? 'invalid' : '' %>" type="text" name="stream" id="stream"  value="<% if (editing|| haserror) { %><%= product.stream %><% } %>">
             </div>
             <div class="form-control">
                 <label for="inWhichYear">inWhichYear</label>
-                <input name="inWhichYear" id="inWhichYear" value="<% if (editing|| haserror) { %><%= product.inWhichYear %><% } %>"></input>
+                <input class="<%= validationInput.find(e => e.param === 'inWhichYear') ? 'invalid' : '' %>" name="inWhichYear" id="inWhichYear" value="<% if (editing|| haserror) { %><%= product.inWhichYear %><% } %>"></input>
             </div>
             <% if (editing) { %>
                 <input type="hidden" value="<%= product._id %>" name="studentid">

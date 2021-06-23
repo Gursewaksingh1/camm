@@ -15,27 +15,27 @@
         <form class="product-form" action="/admin/<% if (editing) { %>edit-company<% } else { %>addcompany<% } %>" method="POST">
              <div class="form-control">
                 <label for="nameOfCompany">nameOfCompany</label>
-                <input type="text" name="nameOfCompany" id="nameOfCompany" value="<% if (editing|| haserror) { %><%= product.nameOfCompany %><% } %>">
+                <input class="<%= validationInput.find(e => e.param === 'nameOfCompany') ? 'invalid' : '' %>" type="text" name="nameOfCompany" id="nameOfCompany" value="<% if (editing|| haserror) { %><%= product.nameOfCompany %><% } %>">
             </div>
             <div class="form-control">
                 <label for="email">email</label>
-                <input type="text" name="email" id="email" value="<% if (editing|| haserror) { %><%= product.email %><% } %>">
+                <input class="<%= validationInput.find(e => e.param === 'email') ? 'invalid' : '' %>" type="text" name="email" id="email" value="<% if (editing|| haserror) { %><%= product.email %><% } %>">
             </div>
             
             <div class="form-control">
                 <% if (!editing) {%>
                 <label f1or="password">Password</label>
-                <input type="password" name="password" id="password" value="<% if (editing|| haserror) { %><%= product.password %><% } %>">
+                <input class="<%= validationInput.find(e => e.param === 'password') ? 'invalid' : '' %>" type="password" name="password" id="password" value="<% if (editing|| haserror) { %><%= product.password %><% } %>">
                 <% } %>
             </div>
 
             <div class="form-control">
                 <label for="ownerName">ownerName</label>
-                <input type="text" name="ownerName" id="ownerName"  value="<% if (editing|| haserror) { %><%= product.ownerName %><% } %>">
+                <input class="<%= validationInput.find(e => e.param === 'ownerName') ? 'invalid' : '' %>" type="text" name="ownerName" id="ownerName"  value="<% if (editing|| haserror) { %><%= product.ownerName %><% } %>">
             </div>
             <div class="form-control">
                 <label for="aboutcompany">aboutcompany</label>
-                <input type="text" name="aboutcompany" id="aboutcompany" value="<% if (editing|| haserror) { %><%= product.aboutCompany %><% } %>"> </input>
+                <input class="<%= validationInput.find(e => e.param === 'aboutCompany') ? 'invalid' : '' %>" type="text" name="aboutCompany" id="aboutCompany" value="<% if (editing|| haserror) { %><%= product.aboutCompany %><% } %>"> </input>
             </div>
             <% if (editing) { %>
                 <input type="hidden" value="<%= product._id %>" name="companyid">

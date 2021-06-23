@@ -18,6 +18,7 @@ exports.getallstudents = (req, res, next) => {
         prods: products,
         pageTitle: 'All students',
         path: '/product',
+
       })
     })
 }
@@ -32,6 +33,7 @@ exports.geteditstudent = (req, res, next) => {
         editing: true,
         product: product,
         haserror: false,
+        validationInput: [],
         errorsmsg: req.flash('error'),
       })
     })
@@ -47,6 +49,7 @@ exports.posteditstudent = (req, res, next) => {
   const updatedinWhichYear = req.body.inWhichYear
   const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      // console.log(errors.array())
         return res.render('student/add-student', {
             pageTitle: 'add-student',
             path: '/add-student',
@@ -60,6 +63,7 @@ exports.posteditstudent = (req, res, next) => {
              inWhichYear: updatedinWhichYear,
              _id: studentid,  
             },
+            validationInput: errors.array(),
             errorsmsg: req.flash('error'),
             errormsg: errors.array()[0].msg,
         });
@@ -92,7 +96,8 @@ exports.getaddcompany = (req, res, next) => {
       path: '/add-company',
       editing: false,
       haserror: false,
-      errorsmsg: req.flash('error')
+      errorsmsg: req.flash('error'),
+      validationInput: [],
   })
 }
 
@@ -101,9 +106,11 @@ exports.postaddcompany = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const ownerName = req.body.ownerName;
-  const aboutCompany = req.body.aboutcompany;
+  const aboutCompany = req.body.aboutCompany;
   const errors = validationResult(req);
+  console.log(aboutCompany)
   if (!errors.isEmpty()) {
+    console.log(errors.array())
    return  res.render('companies/add-company', {
       pageTitle: 'add-company',
       path: '/add-company',
@@ -116,6 +123,7 @@ exports.postaddcompany = (req, res, next) => {
         ownerName,
         aboutCompany,
       },
+      validationInput: errors.array(),
       errorsmsg: req.flash('error'),
       errormsg: errors.array()[0].msg,
   })
@@ -174,7 +182,8 @@ exports.geteditcompany = (req, res, next) => {
       editing: true,
       haserror: false,
       errorsmsg: req.flash('error'),
-      product: product
+      product: product,
+      validationInput: [],
     })
   })
   .catch(err => console.log(err))
@@ -185,7 +194,7 @@ exports.posteditcompany = (req, res, next) => {
   const updatedemail = req.body.email;
   const updatedownerName = req.body.ownerName;
   const updatedpassword = req.body.password;
-  const updatedaboutCompany = req.body.aboutcompany;
+  const updatedaboutCompany = req.body.aboutCompany;
   const companyid = req.body.companyid;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -202,6 +211,7 @@ exports.posteditcompany = (req, res, next) => {
         aboutCompany: updatedaboutCompany,
         _id: companyid
       },
+      validationInput: errors.array(),
       errorsmsg: req.flash('error'),
       errormsg: errors.array()[0].msg,
   })
@@ -260,6 +270,7 @@ exports.getaddadmin = (req, res, next) => {
     editing: false,
     haserror: false,
     errorsmsg: req.flash('error'),
+    validationInput: [],
   })
 }
 
@@ -273,6 +284,7 @@ exports.postaddadmin = (req, res, next) => {
   const address = req.body.address;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    // console.log(errors.array())
     return res.render('admin/addadmin', {
       pageTitle: 'add-admin',
       path: '/admin/add-admin',
@@ -288,6 +300,7 @@ exports.postaddadmin = (req, res, next) => {
       },
       errorsmsg: req.flash('error'),
       errormsg: errors.array()[0].msg,
+      validationInput: errors.array(),
     });
 
   }

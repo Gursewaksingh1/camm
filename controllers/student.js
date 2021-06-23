@@ -11,7 +11,8 @@ exports.getaddstudent = (req, res, next) => {
         path: '/add-student',
         editing: false,
         haserror: false,
-        errorsmsg: req.flash('error')
+        errorsmsg: req.flash('error'),
+        validationInput: []
     })
 }
 
@@ -23,7 +24,8 @@ exports.postaddstudent = (req, res, next) => {
     const inWhichYear = req.body.inWhichYear;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        res.render('student/add-student', {
+        // console.log(errors.array())
+        return res.render('student/add-student', {
             pageTitle: 'add-student',
             path: '/add-student',
             editing: false,
@@ -37,6 +39,7 @@ exports.postaddstudent = (req, res, next) => {
              inWhichYear  
             },
             errormsg: errors.array()[0].msg,
+            validationInput: errors.array(),
         });
     }
     Student.findOne({ email: email })
