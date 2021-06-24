@@ -7,8 +7,8 @@ exports.home = (req, res, next) => {
     res.render('homepage/homepage', {
         prods: products,
         pageTitle: 'All Products',
-        path: '/product',
-        admin: false
+        path: '/',
+        admin: false,
       });
     };
 
@@ -165,13 +165,13 @@ console.log(admins[0])
     exports.getaboutus = (req, res, next) => {
       res.render('homepage/about-us', {
         pageTitle: 'about-us',
-        path: 'about-us'
+        path: '/about-us'
       })
     }
 
     exports.getcontactus = (req, res, next) => {
       res.render('homepage/contact-us', {
         pageTitle: 'contact-us',
-        path: 'contact-us'
+        path: '/contact-us'
       })
     }

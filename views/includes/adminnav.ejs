@@ -4,20 +4,20 @@
         <button id="side-menu-toggle">Menu</button>
         <ul class="main-header__item-list">
             <li class="main-header__item">
-                <a class="<%= path === '/' ? 'active' : '' %>" href="/admin">home</a></li>
+                <a class="<%= path === '/admin' ? 'active' : '' %>" href="/admin">home</a></li>
             <li class="main-header__item">
-                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/admin/addcompany">Add-Company</a></li>
+                <a class="<%= path === '/admin/addcompany' ? 'active' : '' %>" href="/admin/addcompany">Add-Company</a></li>
                 <li class="main-header__item">
-                    <a class="<%= path === '/cart' ? 'active' : '' %>" href="/admin/all-students">All-Students</a></li>
+                    <a class="<%= path === '/admin/all-students' ? 'active' : '' %>" href="/admin/all-students">All-Students</a></li>
                         
                 <li>
                 <li class="main-header__item">
-                <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/all-companies">All-Companies</a></li>
+                <a class="<%= path === '/admin/all-companies' ? 'active' : '' %>" href="/admin/all-companies">All-Companies</a></li>
                 <li class="main-header__item">
-                    <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/all-admin">All-admin</a></li>
+                    <a class="<%= path === '/admin/all-admin' ? 'active' : '' %>" href="/admin/all-admin">All-admin</a></li>
                 
                 <li class="main-header__item">
-                <a class="<%= path === '/admin-products' ? 'active' : '' %>" href="/admin/add-admin">Add-Admin</a></li>
+                <a class="<%= path === '/admin/add-admin' ? 'active' : '' %>" href="/admin/add-admin">Add-Admin</a></li>
                 <form action="/logout" method="post">
                 <li class="main-header__item">
                         <button class="btn" type="submit">Logout</button>

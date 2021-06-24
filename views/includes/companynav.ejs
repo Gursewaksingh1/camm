@@ -5,13 +5,13 @@
     <nav class="main-header__nav">
         <ul class="main-header__item-list">
             <li class="main-header__item">
-                <a class="<%= path === '/' ? 'active' : '' %>" href="/company">Home</a></li>                             
+                <a class="<%= path === '/company' ? 'active' : '' %>" href="/company">Home</a></li>                             
             <li class="main-header__item">
-                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/company/all-resume">applied-Students</a></li>
+                <a class="<%= path === '/company/all-resume' ? 'active' : '' %>" href="/company/all-resume">applied-Students</a></li>
             <li class="main-header__item">
-                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/company/other-companies">Other-Companies</a></li>
+                <a class="<%= path === '/company/other-companies' ? 'active' : '' %>" href="/company/other-companies">Other-Companies</a></li>
             <li class="main-header__item">
-                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/company/selected-students">Selected-Students</a></li>
+                <a class="<%= path === '/company/selected-students' ? 'active' : '' %>" href="/company/selected-students">Selected-Students</a></li>
                 <li class="main-header__item">
                     <form action="/logout" method="POST">
                         <button class="btn" type="submit">Logout</button>

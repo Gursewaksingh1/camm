@@ -7,7 +7,7 @@ const { validationResult } = require('express-validator/check');
 exports.adminhomepage = (req, res, next) => {
   res.render('homepage/homepage', {
     pageTitle: 'admin-home-page',
-    path: 'homepage',
+    path: '/admin',
     admin: true
   })
 }
@@ -17,7 +17,7 @@ exports.getallstudents = (req, res, next) => {
       res.render('admin/getallstudent', {
         prods: products,
         pageTitle: 'All students',
-        path: '/product',
+        path: '/admin/all-students',
 
       })
     })
@@ -93,7 +93,7 @@ exports.postdeletestudent = (req, res, next) => {
 exports.getaddcompany = (req, res, next) => {
   res.render('companies/add-company', {
       pageTitle: 'add-company',
-      path: '/add-company',
+      path: '/admin/addcompany',
       editing: false,
       haserror: false,
       errorsmsg: req.flash('error'),
@@ -249,7 +249,7 @@ exports.getalladmin = (req, res, next) => {
         prods: admin,
         editing: false,
         haserror: false,
-        path: 'all-admin'
+        path: '/admin/all-admin'
       })
     })
 }

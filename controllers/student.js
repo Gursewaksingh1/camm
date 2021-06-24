@@ -8,7 +8,7 @@ const student = require('../model/student');
 exports.getaddstudent = (req, res, next) => {
     res.render('student/add-student', {
         pageTitle: 'add-student',
-        path: '/add-student',
+        path: '/student/addstudent',
         editing: false,
         haserror: false,
         errorsmsg: req.flash('error'),
@@ -73,7 +73,7 @@ exports.postaddstudent = (req, res, next) => {
 exports.gethome = (req, res, next) => {
     res.render('student/home', {
         pageTitle: 'student-homepage',
-        path: 'home'
+        path: '/student'
     })
 }
 
@@ -82,7 +82,7 @@ exports.getstudentdetail = (req, res, next) => {
  Student.findById(studentid)
     .then(student => {
         res.render('student/student-detail', {
-            path: 'student-detail',
+            path: '/student/student-detail',
             pageTitle: 'student-detail',
             product: student,
             editing: true
@@ -112,7 +112,7 @@ exports.getaddresume = (req, res, next) => {
     res.render('student/add-resume', {
         pageTitle: 'add-resume',
         editing: false,
-        path: 'addresume'
+        path: '/student/Add-resume'
     })
 }
 
@@ -159,7 +159,7 @@ exports.getviewcompanies = (req, res, next) => {
         .then(result => {
             res.render('student/view-companies', {
                 pageTitle: 'All-companies',
-                path: 'all-companies',
+                path: '/student/view-company',
                 foradmin: false,
                 prods: result
             })
@@ -173,7 +173,7 @@ exports.getviewplacement = (req, res, next) => {
     .then(result => {
         res.render('student/view-placement', {
             pageTitle: 'view-placement',
-            path: 'view-placement',
+            path: '/student/view-placement',
             prods: result,
         })
         // console.log(result.studentid)

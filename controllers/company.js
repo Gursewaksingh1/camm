@@ -7,7 +7,7 @@ const seletctedStudent = require('../model/seletcted-student');
 exports.gethome = (req, res, next) => {
    res.render('companies/home', {
        pageTitle: 'home',
-       path: 'companies/home',
+       path: '/company',
        
    }) 
 }
@@ -31,7 +31,7 @@ exports.getallresume = (req, res, next) => {
         .then(resume => {
             res.render('companies/showallresume', {
                 pageTitle: 'student-resume',
-                path: 'student-resume',
+                path: '/company/all-resume',
                 prods: resume
             })
         })
@@ -60,11 +60,11 @@ exports.getSelectedStudent = (req, res, next) => {
         .then(selectedstudent => {
             res.render('companies/selected-student', {
                 pageTitle: 'selected-students',
-                path: 'selected-students',
+                path: '/company/selected-students',
                 prods: selectedstudent,
             });
         }).catch(err => {
-            console.log(err);
+            console.log(err); 
         });
 };
 
